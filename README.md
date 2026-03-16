@@ -17,3 +17,4 @@
 | :--- | :--- | :--- | :--- | :--- |
 |---|---|---|---|---|
 | 1 | Linux Internal Architecture & Kernel Hardening (Arch Focus) | 01-Foundations | Mastered the interaction between User-space and Kernel-space via System Calls. Conducted a deep dive into the boot process and implemented initial sysctl hardening to secure the network stack on an Arch-based architecture. | [View Notes](01-Foundations/Day-01-linux-internal-architecture--kernel-hardening-arch-focus.md) |
+| 2 | Networking Deep Dive: TCP/IP Stack & OSI Security | 01-Foundations | Conducted a deep-dive analysis of the TCP/IP stack and OSI model. Practiced packet inspection using Wireshark and mastered network diagnostic tools (ip, netstat, ss) on Arch Linux. Implemented basic firewall rules via iptables to restrict unauthorized inbound traffic, bridging the gap between networking theory and defensive implementation. | [View Notes](01-Foundations/Day-02-networking-deep-dive-tcpip-stack--osi-security.md) |

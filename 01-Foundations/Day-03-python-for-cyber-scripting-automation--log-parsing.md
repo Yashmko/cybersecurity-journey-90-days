@@ -1,6 +1,6 @@
 # 📘 Master-Level Handbook: Python for Cyber—Scripting Automation & Log Parsing
 
-**Author:** [Your Name/Senior Cybersecurity Architect]
+**Author:** [Bhavishya]
 **Version:** 1.0
 **Subject:** Advanced Automation for Security Operations (SecOps)
 

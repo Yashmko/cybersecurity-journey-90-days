@@ -3,7 +3,7 @@ This handbook is designed to be a cornerstone of a Master-Level Cybersecurity Po
 ---
 
 # 🛡️ Master-Level Handbook: Networking Deep Dive & OSI Security
-**Author:** [Your Name/Senior Cybersecurity Architect]  
+**Author:** Bhavishya
 **Focus:** Protocol Security, Traffic Analysis, and Hardening  
 **Target Environment:** Heterogeneous Linux Infrastructure (Debian, RHEL, Arch)
 

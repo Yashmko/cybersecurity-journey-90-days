@@ -1,6 +1,6 @@
 # 🧠 Master-Level Handbook: Linux Internal Architecture & Kernel Hardening
 
-**Author:** [Your Name/Senior Architect]
+**Author:** Bhavishya
 **Subject:** Advanced Kernel Security, Arch-Specific Hardening, and Defense-in-Depth
 **Version:** 1.0 (Enterprise-Grade)
 

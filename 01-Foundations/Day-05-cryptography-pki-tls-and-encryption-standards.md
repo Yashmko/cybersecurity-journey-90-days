@@ -120,14 +120,18 @@ nmap -p 443 --script ssl-heartbleed <target_ip>
 
 ## 🛠️ Lab Report: What We Mastered
 
-During this module, I achieved a comprehensive understanding of the modern web penetration testing stack. **I mastered the professional Burp Suite workflow, focusing on the Intercept, Repeater, and Intruder modules. Configured FoxyProxy for seamless browser integration and practiced manual request manipulation to identify hidden parameters. Explored the 'Sequencer' for entropy analysis and used 'Decoder' for real-time Base64 and URL encoding/decoding. This forms the core of my web application penetration testing methodology.**
+Mastered the implementation of the PKI hierarchy and analyzed the TLS 1.3 handshake process. Conducted hands-on exercises with OpenSSL to generate 4096-bit RSA keys, Certificate Signing Requests (CSRs), and self-signed certificates. Successfully implemented GPG for secure file encryption and verified the integrity of downloaded binaries using SHA-256 checksums, ensuring a robust foundation in data confidentiality and non-repudiation
 
 **Tools Used:**
-*   **OpenSSL:** Key/CSR generation and certificate validation.
-*   **Burp Suite Professional:** Traffic interception and cryptographic analysis of session tokens.
-*   **SSLLabs (A-Plus):** External validation of web server hardening.
-*   **Wireshark:** Analyzing the TLS Handshake (Client Hello/Server Hello).
+OpenSSL: The industry standard for Key/CSR generation and certificate chain validation.
 
+GnuPG (GPG): Used for asymmetric file encryption and verifying digital signatures of software binaries.
+
+SSLLabs / TestSSL.sh: To perform external deep-scanning of TLS configurations and cipher suite strength.
+
+Wireshark: To capture and dissect the TLS 1.3 Handshake (analyzing the "Client Hello" and "Server Hello" packets).
+
+Hashdeep / md5sum: For verifying data integrity via cryptographic hashing (SHA-256).
 ---
 
 ## 🚨 Real-World Breach Case Study: DigiNotar (2011)

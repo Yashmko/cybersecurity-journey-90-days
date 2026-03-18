@@ -1,104 +1,103 @@
-rm syllabus.txt
 cat << 'EOF' > syllabus.txt
 # ============================================================
-# 🛡️ PHASE 1: FOUNDATIONS & INFRASTRUCTURE (DAYS 01-30) ⚙️
+# 🟦 PHASE 1: THE FOUNDATION (DAYS 01-30) ⚙️
 # ============================================================
 Day 01: Linux Internal Architecture & Kernel Hardening (Arch Focus)
-Day 02: Networking Deep Dive: TCP/IP Stack & OSI Security
-Day 03: Python for Cyber: Scripting Automation & Log Parsing
-Day 04: HTTP/HTTPS Deep Dive: Methods, Headers & Smuggling
-Day 05: Burp Suite Mastery: The Professional Workflow
-Day 06: Reconnaissance 2.0: OSINT & Infrastructure Mapping
-Day 07: Linux Privilege Escalation & Security Hardening
-Day 08: Identity & Access Management (IAM) & SSH Security
+Day 02: Advanced Bash Scripting & Automation Security
+Day 03: Networking Deep Dive: TCP/IP Stack & OSI Security
+Day 04: Python for Cyber: Scripting Automation & Log Parsing
+Day 05: Cryptography: PKI, TLS, and Encryption Standards
+Day 06: Service Management: Hardening SSH, FTP, and Web Servers
+Day 07: Linux Privilege Escalation: SUID, Capabilities & Cron Jobs
+Day 08: Identity & Access Management (IAM) & PAM Security
 Day 09: Virtualization & Lab Setup: Docker vs VMs for Testing
-Day 10: Bash Scripting for Security Auditing
-Day 11: Cryptography: PKI, TLS, and Encryption Standards
-Day 12: Network Defense: IDS/IPS & Firewall Orchestration
+Day 10: Information Gathering: Passive Recon & OSINT Techniques
+Day 11: Active Recon: Advanced Nmap Scripting (NSE)
+Day 12: Vulnerability Management: Scanning (Nessus/OpenVAS)
 Day 13: Wireless Security: WPA3 & Enterprise WiFi Defense
 Day 14: Introduction to MITRE ATT&CK Framework
-Day 15: Malware Analysis: Static Sandboxing Basics
-Day 16: Active Directory Fundamentals for Hackers
-Day 17: Vulnerability Management: Scanning to Patching
-Day 18: Breach Investigation: Anatomy of a Web Hack
-Day 19: Security Operations: Red vs Blue Team Dynamics
+Day 15: Lab: Building a Hardened Linux Gateway
+Day 16: Network Defense: IDS/IPS & Firewall (pfSense/iptables)
+Day 17: Log Aggregation: Centralizing Syslog & Auth.log
+Day 18: Linux Forensics: Analyzing Artifacts & Timelines
+Day 19: Security Auditing: Using Lynis & OpenSCAP
 Day 20: Phase 1 Review & Knowledge Gap Analysis
-Day 21: Lab: Building a Hardened Linux Gateway
-Day 22: Lab: Setting up a Secure PFSense Firewall
-Day 23: Lab: Deploying a Private VPN Server
-Day 24: Lab: Advanced Nmap Scripting (NSE)
-Day 25: Lab: Building a Personal Malware Sandbox
-Day 26: Lab: Setting up a Windows Server AD Environment
-Day 27: Lab: Linux Log Aggregation & Analysis
-Day 28: Lab: Hardening Docker Containers
-Day 29: Lab: Automating Recon with Python
+Day 21: Lab: Setting up a Secure VPN (WireGuard/OpenVPN)
+Day 22: Lab: Hardening SSH with MFA & Keys
+Day 23: Lab: Network Traffic Analysis with Wireshark
+Day 24: Lab: Automating System Backups with Restic/Rsync
+Day 25: Lab: Building a Private Git Server (Gitea) for Code Security
+Day 26: Lab: DNS Security & DNSSEC Implementation
+Day 27: Lab: Detecting Rootkits with rkhunter & chkrootkit
+Day 28: Lab: Hardening the Arch Linux GRUB & Bootloader
+Day 29: Lab: Scripting a Custom Network Scanner in Python
 Day 30: Lab: Phase 1 Final Audit & Clean-up
 
 # ============================================================
-# 🕸️ PHASE 2: ATTACK VECTORS & PENTESTING (DAYS 31-60) 🔥
+# 🟥 PHASE 2: OFFENSIVE OPERATIONS (DAYS 31-60) ⚔️
 # ============================================================
-Day 31: SQL Injection: Manual Discovery & RCA
-Day 32: XSS (Cross-Site Scripting): Payloads & Remediation
-Day 33: Broken Authentication & Session Management
-Day 34: IDOR & Functional Level Access Control Flaws
-Day 35: Application Security: OWASP Top 10 Framework
-Day 36: API Security: Pentesting REST & GraphQL
-Day 37: SSRF & CSRF: Server-Side Exploitation
-Day 38: File Upload Vulnerabilities & RCE
-Day 39: Cloud Security: AWS S3 Bucket Misconfigurations
-Day 40: Mobile App Security: Android/iOS Basics
-Day 41: Bug Bounty: Hunting on WebGoat Part 1
-Day 42: Bug Bounty: Hunting on WebGoat Part 2
-Day 43: Bug Bounty: JuiceShop OWASP Challenges
-Day 44: Bug Bounty: Advanced Fuzzing with Ffuf
-Day 45: Bug Bounty: Subdomain Takeover Research
-Day 46: Bug Bounty: Logic Flaw Hunting
-Day 47: Bug Bounty: Exploit Development Basics
-Day 48: Bug Bounty: Bypassing WAFs
-Day 49: Bug Bounty: Reporting & Severity Scoring (CVSS)
-Day 50: Bug Bounty: Deep Dive into HackerOne Reports
-Day 51: Pentest: Writing Executive Summaries
-Day 52: Pentest: Technical Vulnerability Documentation
-Day 53: Pentest: Remediation Planning for Clients
-Day 54: Pentest: Using LaTex for Professional Reports
-Day 55: Pentest: Building a Portfolio of Findings
-Day 56: Pentest: Tools for Automated Reporting
-Day 57: Pentest: Client Communication & Scoping
-Day 58: Pentest: Legal & Ethical Boundaries
-Day 59: Pentest: Creating a Personal Methodology
-Day 60: Phase 2 Final Review & Exam
+Day 31: HTTP/HTTPS Deep Dive: Methods, Headers & Smuggling
+Day 32: Burp Suite Mastery: The Professional Workflow
+Day 33: OWASP Top 10: Broken Access Control & IDOR
+Day 34: SQL Injection (SQLi): Manual & Automated Exploitation
+Day 35: Cross-Site Scripting (XSS): Stored, Reflected & DOM-based
+Day 36: File Upload Vulnerabilities & RCE
+Day 37: API Security: Testing RESTful APIs & GraphQL
+Day 38: Active Directory Fundamentals for Hackers
+Day 39: AD Exploitation: Kerberoasting & LLMNR Poisoning
+Day 40: Lateral Movement & Persistence Techniques
+Day 41: PowerShell for Hackers: Living Off the Land (LotL)
+Day 42: Antivirus Evasion: Obfuscation & Shellcode Basics
+Day 43: Buffer Overflows: Stack-Based Exploitation 101
+Day 44: Metasploit Framework: Advanced Modules & Post-Ex
+Day 45: Social Engineering: Phishing & Credential Harvesting
+Day 46: Cloud Hacking: Misconfigured S3 Buckets & IAM Roles
+Day 47: Command & Control (C2): Introduction to Sliver/Havoc
+Day 48: Mobile Security: Android App Decompilation (JADX)
+Day 49: Mobile Security: iOS Security Architecture Basics
+Day 50: IoT Security: Firmware Extraction & Analysis
+Day 51: Bug Bounty Hunting: Methodology & Recon at Scale
+Day 52: Advanced Burp: Turbo Intruder & Custom Extensions
+Day 53: Privilege Escalation (Windows): Token Impersonation
+Day 54: Kerberos Attacks: Golden & Silver Tickets
+Day 55: Web Cache Deception & Poisoning Attacks
+Day 56: Server-Side Request Forgery (SSRF) Deep Dive
+Day 57: XML External Entity (XXE) Exploitation
+Day 58: Insecure Deserialization in Java & Python
+Day 59: Writing Professional Pen-Test Reports
+Day 60: Phase 2 Review: The Red Team Mindset
 
 # ============================================================
-# ⚡ PHASE 3: SOC OPS, SIEM & COMPLIANCE (DAYS 61-90) 📋
+# 🟩 PHASE 3: DEFENSIVE & SOC OPS (DAYS 61-90) 🛡️
 # ============================================================
-Day 61: SIEM Architecture: Design, Deployment & Data Flow
-Day 62: Hands-on Splunk: Log Ingestion & Dashboarding
+Day 61: SOC Operations: SIEM Architecture & Data Ingestion
+Day 62: Splunk/Sentinel Mastery: KQL and SPL Querying
 Day 63: Incident Response: The PICERL Framework
-Day 64: SIEM Alerting & Rule Writing (Sigma & Yara)
-Day 65: SOC Analyst Workflow: Triage & RCA in Splunk
-Day 66: GRC Fundamentals: ISO 27001 & NIST Standards
-Day 67: Risk Management & Cybersecurity Governance
-Day 68: Securing Emerging Tech: IoT & AI Security Risks
-Day 69: Digital Forensics: Memory & Disk Image Analysis
-Day 70: Threat Hunting: Proactive Defense Strategies
-Day 71: SOC: Responding to Brute Force Attacks
-Day 72: SOC: Investigating Phishing Headers
-Day 73: SOC: Tracking Lateral Movement in AD
-Day 74: SOC: Detecting Data Exfiltration
-Day 75: SOC: Responding to a Ransomware Simulation
-Day 76: GRC: Writing a Security Policy
-Day 77: GRC: Performing a Gap Analysis
-Day 78: GRC: Vendor Risk Management
-Day 79: GRC: Compliance Auditing for ISO 27001
-Day 80: GRC: Disaster Recovery Planning
-Day 81: Career: Resume Building for Security Roles
-Day 82: Career: Creating a LinkedIn Hacker Brand
-Day 83: Career: GitHub Portfolio Perfection
-Day 84: Career: Mock Interview - Technical Round
-Day 85: Career: Mock Interview - Behavioral Round
-Day 86: Career: Salary Negotiation & Role Selection
-Day 87: Career: Continuous Learning & Certifications Plan
-Day 88: Career: Networking with Industry Professionals
-Day 89: Career: Final 90-Day Project Showcase
-Day 90: Grand Graduation & The Journey Beyond
+Day 64: Malware Analysis: Static & Dynamic Sandboxing
+Day 65: Digital Forensics: Memory Analysis with Volatility
+Day 66: Threat Intelligence: Using MISP & AlienVault OTX
+Day 67: GRC Frameworks: NIST CSF, ISO 27001 & SOC2
+Day 68: Zero Trust Architecture & Cloud Security (AWS/Azure)
+Day 69: DevSecOps: Integrating SAST/DAST in CI/CD
+Day 70: Risk Assessment: Quantitative vs Qualitative Analysis
+Day 71: Endpoint Detection & Response (EDR) Fundamentals
+Day 72: Hunting with Sysmon & ELK Stack
+Day 73: Network Security Monitoring (NSM) with Security Onion
+Day 74: Email Security: Analyzing Headers & Phishing Artifacts
+Day 75: Forensic Disk Imaging: Using dd & Autopsy
+Day 76: Insider Threat Detection: User Behavior Analytics (UEBA)
+Day 77: Supply Chain Security: Software Bill of Materials (SBOM)
+Day 78: SCADA/ICS Security: Protecting Critical Infrastructure
+Day 79: HIPAA & GDPR Compliance: Privacy Law Security
+Day 80: Disaster Recovery & BCP Planning
+Day 81: AI in Cyber: Detecting Deepfakes & Poisoning Attacks
+Day 82: Attacking AI: Adversarial Machine Learning Basics
+Day 83: Vulnerability Disclosure Programs (VDP) & Ethics
+Day 84: Advanced SOC Dashboards: Real-time Attack Viz
+Day 85: Professional Cert Prep: OSCP/Security+ Strategy
+Day 86: Mock Incident Response Simulation
+Day 87: Mock Pen-Test Simulation
+Day 88: Career Branding: Optimizing LinkedIn & Resume
+Day 89: Interview Mastery: Technical & Behavioral Prep
+Day 90: Final Graduation: The Diamond Standard Reveal
 EOF

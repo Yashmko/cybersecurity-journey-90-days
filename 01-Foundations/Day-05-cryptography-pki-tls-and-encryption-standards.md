@@ -1,5 +1,4 @@
 # 🎓 Master-Level Handbook: Cryptography, PKI, and TLS 
-**Role:** Senior Cybersecurity Architect & Mentor  
 **Focus:** Infrastructure Integrity & Confidentiality  
 
 ---

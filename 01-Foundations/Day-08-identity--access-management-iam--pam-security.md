@@ -1,5 +1,5 @@
 # 📑 Master-Level Handbook: IAM & PAM Security Architectures
-**Author:** Senior Cybersecurity Architect & Mentor
+**Author:** Bhavishya
 **Focus:** Linux Identity, Privileged Access, and Local Persistence Defense
 
 ---

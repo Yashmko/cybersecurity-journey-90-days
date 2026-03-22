@@ -21,7 +21,7 @@ Docker leverages the host’s Linux Kernel, using **Namespaces** (for visibility
 
 ---
 
-## 💻 Universal Implementation (The 'How-To')
+## 💻 Universal Implementation Linux(The 'How-To')
 
 ### 🔵 Debian/Ubuntu/Kali
 ```bash

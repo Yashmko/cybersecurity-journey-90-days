@@ -1,7 +1,7 @@
 # 🛡️ Master-Level Handbook: Linux Privilege Escalation
 **Focus Area:** SUID, Linux Capabilities, and Cron Jobs  
 **Target Audience:** Security Engineers, Penetration Testers, and Systems Architects  
-**Author:** [Your Name/Senior Cybersecurity Architect]
+**Author:** Bhavishya
 
 ---
 

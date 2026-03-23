@@ -1,5 +1,5 @@
 # 📘 Master-Level Handbook: Information Gathering (Passive Recon & OSINT)
-**Author:** Senior Cybersecurity Architect & Mentor
+**Author:** Bhavishya
 **Version:** 1.0 (The Zenith Protocol)
 **Objective:** Mastering the art of invisibility and observation without touching the target's perimeter.
 

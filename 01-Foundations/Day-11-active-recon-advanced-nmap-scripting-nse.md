@@ -1,6 +1,5 @@
 # 🛡️ Master-Level Handbook: Advanced Nmap Scripting Engine (NSE)
-**Author:** [Your Name/Senior Architect Portfolio]  
-**Level:** 400 (Expert)  
+**Author:** Bhavishya Mamodiya    
 **Focus:** Active Reconnaissance, Service Interrogation, and Stealth Optimization
 
 ---

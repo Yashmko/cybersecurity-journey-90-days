@@ -1,6 +1,4 @@
 # 🛡️ Master-Level Handbook: The MITRE ATT&CK® Framework
-**Author:** Senior Cybersecurity Architect & Mentor
-**Level:** 400 (Mastery)
 **Subject:** Adversarial Emulation, Defensive Engineering, and Tactical Mapping
 
 ---

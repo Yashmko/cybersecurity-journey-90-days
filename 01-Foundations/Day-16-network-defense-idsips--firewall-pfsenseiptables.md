@@ -1,7 +1,6 @@
 # 🛡️ Master-Level Handbook: Network Defense Infrastructure
 **Subject:** IDS/IPS & Next-Generation Firewalling (pfSense/iptables/nftables)
-**Role:** Senior Cybersecurity Architect & Mentor
-**Level:** 400 (Expert)
+
 
 ---
 

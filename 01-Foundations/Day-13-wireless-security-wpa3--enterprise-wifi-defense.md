@@ -1,7 +1,6 @@
 # 📶 Master Handbook: Wireless Security, WPA3, & Enterprise WiFi Defense
 
-**Author:** [Your Name/Senior Architect]
-**Level:** Master (400)
+**Author:** Bhavishya Mamodiya
 **Focus:** Wireless Infrastructure Hardening & Protocol Analysis
 
 ---

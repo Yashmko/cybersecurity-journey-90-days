@@ -1,7 +1,5 @@
 # 🛡️ Masterclass Handbook: HTTP/HTTPS Deep Dive & Request Smuggling
-**Author:** Senior Cybersecurity Architect & Mentor  
 **Focus:** Web Protocol Security, Desynchronization, and Defensive Architecture  
-**Level:** Master Level (Senior/Lead Security Engineer)
 
 ---
 

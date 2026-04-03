@@ -1,6 +1,5 @@
 # 🏆 MASTER-LEVEL HANDBOOK: Log Aggregation & Centralization
 **Subject:** Enterprise Centralization of `Syslog` & `Auth.log`  
-**Role:** Senior Cybersecurity Architect & Mentor  
 **Scope:** Visibility, Non-Repudiation, and Incident Response Readiness
 
 ---

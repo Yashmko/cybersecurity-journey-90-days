@@ -1,6 +1,6 @@
 # 🧠 Master-Level Technical Handbook: Linux Forensics & Timeline Analysis
 
-**Author:** [Your Name/Senior Cybersecurity Architect]  
+**Author:** Bhavishya Mamodiya
 **Focus:** Incident Response, Artifact Recovery, and Anti-Forensics Detection  
 **Level:** 400 (Mastery)
 

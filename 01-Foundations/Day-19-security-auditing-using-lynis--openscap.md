@@ -1,6 +1,5 @@
 # 📘 Master-Level Technical Handbook: Enterprise Security Auditing
 **Focus:** Lynis (Host Hardening) & OpenSCAP (Compliance Frameworks)
-**Author:** Senior Cybersecurity Architect & Mentor
 **Classification:** TLP:CLEAR
 
 ---

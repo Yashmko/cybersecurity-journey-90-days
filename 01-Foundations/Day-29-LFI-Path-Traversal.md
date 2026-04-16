@@ -23,7 +23,6 @@ Exploit a path traversal vulnerability in a custom Python application to break o
 The script utilized `os.path.join(base_path, filename)` to construct file paths. The fatal flaw was trusting the `filename` input without sanitizing directory traversal characters.
 
 ### 🩸 Raw Output & Logs (The Breach)
-\`\`\`text
 ➜ python vulnerable_reader.py
 --- Zenith Document Viewer v1.0 ---
 Available files: news.txt, about.txt
@@ -59,8 +58,6 @@ _talkd:x:964:964:User for legacy talkd server:/:/usr/bin/nologin
 rtkit:x:963:963:RealtimeKit:/:/usr/bin/nologin
 ollama:x:961:961:ollama user:/var/lib/ollama:/usr/bin/nologin
 flatpak:x:960:960:Flatpak system helper:/:/usr/bin/nologin
-\`\`\`
-
 ---
 
 ## 🛡️ RCA (Root Cause Analysis) & Defense-in-Depth

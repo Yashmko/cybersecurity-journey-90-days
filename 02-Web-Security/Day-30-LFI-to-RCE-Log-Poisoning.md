@@ -17,33 +17,24 @@ If an attacker can write controlled input to a file on the server (like an Apach
 ## 🗺️ Visualizing the Attack Chain
 
 ### 🧑‍🍳 The Restaurant Analogy (The Logic)
-```mermaid
-graph TD
-    A[👤 Customer] -->|1. Names self: 'Magic_Tag Unlock_Door Magic_Tag'| B(🧑‍🍳 The Chef)
-    B -->|2. Rule 1: Write name in Diary| C{📖 access.log}
-    A -->|3. Asks Chef to read 'Diary' via LFI| B
-    B -->|4. Reads Diary into Brain| D[🧠 Chef Brain]
-    D -->|5. Panic! Detects Magic Tags| E[✂️ The Scissors]
-    E -->|6. Cuts out command: 'Unlock Door'| F[💥 EXECUTION]
-    F -->|Result| G[🔓 Door Unlocked / System Pwned]
+```text
+[ 👤 Customer ]  --> Names self with Magic Tags --> [ 🧑‍🍳 The Chef ]
+[ 🧑‍🍳 The Chef ] --> Writes name in Diary      --> [ 📖 access.log ]
+[ 👤 Customer ]  --> Asks Chef to read Diary    --> [ 🧑‍🍳 The Chef ]
+[ 🧑‍🍳 The Chef ] --> Reads Diary into Brain     --> [ 🧠 Chef Brain ]
+[ 🧠 Chef Brain ] --> Detects Magic Tags        --> [ ✂️ The Scissors ]
+[ ✂️ The Scissors] --> Cuts out command          --> [ 💥 EXECUTION ]
 💻 The Technical Flow (The Code)
-Code snippet
-sequenceDiagram
-    participant U as 👤 Attacker
-    participant S as 🧑‍💻 Server (vulnerable_server.py)
-    participant L as 📄 access.log
+Plaintext
+Phase 1: The Trap (Poisoning)
+1. Attacker sends Request with Malicious User-Agent (<zenith_exec>...)
+2. Server executes log.write(user_agent) -> Poison is saved to access.log
 
-    Note over U, L: Phase 1: Poisoning
-    U->>S: Request with Malicious User-Agent (<zenith_exec>...)
-    S->>L: log.write(user_agent) [Poison Stored]
-
-    Note over U, L: Phase 2: Triggering
-    U->>S: LFI Request for ../access.log
-    S->>L: open(full_path, "r")
-    L-->>S: returns log content with payload
-    S->>S: split() [Isolate Python Code]
-    S->>S: exec(payload) [RCE Triggered]
-    S-->>U: Code Execution Result (e.g., pwned_by_rce.txt created)
+Phase 2: The Trigger (Execution)
+3. Attacker sends LFI Request for ../access.log
+4. Server opens the log file and reads the content
+5. Server uses split() to isolate the Python code inside the tags
+6. Server runs exec(payload) -> Remote Code Execution achieved!
 💻 Lab: The "Dirty Hands" Execution
 🎯 Objective
 Escalate an LFI vulnerability to RCE by poisoning a custom web server's access log with a malicious Python payload, subsequently using path traversal to execute it.
@@ -141,4 +132,3 @@ PortSwigger Web Security Academy: File path traversal labs.
 HackTricks: LFI to RCE via Log Poisoning
 
 PayloadsAllTheThings - File Inclusion
-

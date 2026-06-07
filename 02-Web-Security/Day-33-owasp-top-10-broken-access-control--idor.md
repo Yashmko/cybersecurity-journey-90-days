@@ -1,8 +1,8 @@
 # 📑 MASTER-LEVEL HANDBOOK: OWASP Top 10 – Broken Access Control & IDOR
 
-**Date:** October 26, 2023  
+**Date:**  OWASP top 10 based on October 26, 2023  
 **Subject:** Advanced Authorization Vulnerabilities and Secure Architectural Design  
-**Author:** Senior Cybersecurity Architect & Mentor  
+**Author:** Cybersecurity Architect & Mentor  
 **Classification:** Technical / Instructional
 
 ---

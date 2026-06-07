@@ -1,6 +1,5 @@
 # 📘 MASTER-LEVEL HANDBOOK: HTTP/HTTPS Deep Dive & Request Smuggling
-**Author:** Senior Cybersecurity Architect
-**Level:** 400 (Expert)
+**Author:** Cybersecurity Architect
 **Focus:** Protocol Desynchronization, Header Analysis, and Defense-in-Depth
 
 ---

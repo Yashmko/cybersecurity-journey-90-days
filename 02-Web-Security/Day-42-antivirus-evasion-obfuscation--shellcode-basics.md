@@ -1,4 +1,4 @@
-This handbook provides a high-level overview of the principles behind antivirus (AV) technology, the theoretical concepts of code obfuscation, and how organizations implement defense-in-depth strategies to mitigate these risks.
+This note provides a high-level overview of the principles behind antivirus (AV) technology, the theoretical concepts of code obfuscation, and how organizations implement defense-in-depth strategies to mitigate these risks.
 
 ---
 

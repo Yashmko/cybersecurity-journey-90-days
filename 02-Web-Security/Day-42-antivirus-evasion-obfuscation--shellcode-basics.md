@@ -61,7 +61,7 @@ The analysis revealed that certain service accounts possessed `GenericAll` right
 
 1.  **Assume Breach:** Never assume your perimeter or AV is 100% effective. Design your architecture with the assumption that a component will eventually be bypassed.
 2.  **Focus on Behavior, Not Signatures:** Signatures are easily changed; behaviors (like LSASS memory dumping or unusual parent-child process relationships) are much harder for an adversary to alter.
-3.  **Automation is Key:** Use Automated Investigation and Response (AIR) capabilities within EDRs to contain threats at machine speed.
+3.  **Automation is Key:** Use Automated Investigation and Response (AIR) capabilities within EDRs to contain threats at machine speed. one of the useful insight here.
 
 **Future Trend:** The rise of **AI-driven detection**. Future security tools will move beyond static heuristics toward deep-learning models capable of identifying malicious intent in code and execution patterns that have never been seen before.
 

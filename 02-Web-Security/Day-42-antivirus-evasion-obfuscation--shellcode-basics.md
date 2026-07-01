@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 This note provides a high-level overview of the principles behind antivirus (AV) technology, the theoretical concepts of code obfuscation, and how organizations implement defense-in-depth strategies to mitigate these risks.
 
 ---
@@ -71,3 +72,5 @@ The analysis revealed that certain service accounts possessed `GenericAll` right
 *   **NIST Special Publication 800-53:** Security and Privacy Controls for Information Systems.
 *   **Microsoft Security Best Practices:** Official documentation on securing Windows and AD environments.
 *   **OWASP Top 10:** Understanding fundamental software vulnerabilities.
+=======
+>>>>>>> 6b322a5 (feat(Day 43): Zenith Implementation for Buffer Overflows: Stack-Based Exploitation 101)

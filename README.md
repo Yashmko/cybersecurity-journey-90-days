@@ -5,7 +5,7 @@
 - **Distro Agnostic:** Implementation for Debian (APT), RHEL (DNF), and Arch Linux (Pacman).
 - **Compliance Aware:** Mapped to NIST CSF, ISO 27001, and MITRE ATT&CK.
 
-## 📊 Phase Roadmap
+## 📊 Phase Roadmap 
 | Phase | Focus Area | Status |
 | :--- | :--- | :--- |
 | **01** | **Foundations:** Linux Internal Arch, Networking, Python | 🟡 In Progress |
